@@ -7,16 +7,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
         <!-- Importing Bootstrap v5.2 -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="https://unpkg.com/vue@3"></script>
 </head>
 
 <body>
-    <div id='app'>
-        <main>
-            <div class="my-color"></div>
-
-            
+    <div id="app" class="flex">
+        <main class="wrapper flex">
+            <section class="left">
+                <div class="topbar user-profile"></div>
+                <div class="topbar user-profile"></div>
+                <div class="contacts-search-input"></div>
+                <div class="contacts-list"></div>
+            </section>
+            <section class="right">
+                <div class="topbar contact-profile"></div>
+            </section>
         </main>
     </div>
         <!-- Importiamo JS -->
