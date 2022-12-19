@@ -1,30 +1,126 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--css-->
     <link rel="stylesheet" href="style.css">
-        <!-- Importing Bootstrap v5.2 -->
-        <script src="https://unpkg.com/vue@3"></script>
-</head>
 
+    <title>Boolzapp</title>
+
+</head>
 <body>
-    <div id="app" class="flex">
-        <main class="wrapper flex">
-            <section class="left">
-                <div class="topbar user-profile"></div>
-                <div class="topbar user-profile"></div>
-                <div class="contacts-search-input"></div>
-                <div class="contacts-list"></div>
+    <div id="background-header"></div>
+    <div id="container">
+        <!-- container-sinistro -->
+        <aside id="first-container">
+            <section class="single-chat">
+                <div class="user-top">
+                    <div class="img-container"> <img src="img/avatar_io.jpg" alt="Alberto"> </div>
+                    <div class="username" >Sofia</div>
+                </div>
+                <div class="nav-icons">
+                    <span class="icons-settings"><i class="fas fa-circle-notch"></i></span>
+                    <span class="icons-settings"><i class="fas fa-comment-alt"></i></span>
+                    <span class="icons-settings"><i class="fas fa-ellipsis-v"></i></span>
+                </div>
+    
             </section>
-            <section class="right">
-                <div class="topbar contact-profile"></div>
+            <!-- notifiche -->
+            <div id="message-alert">
+                <div class="img-container style-message"> <i class="fas fa-bell-slash"></i> </div>
+                    <span>
+                        Ricevi Notifiche di nuovi messaggi <br>
+                        <a href=""> Attiva notifiche desktop</a>
+                    </span>
+
+            </div>
+            <div class="background-search-list">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-chat-list" v-model="userSearch" placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+
+            <div id="chat">
+                <div class="select-chat" v-for= 'contact, i in contacts' :key='i'  @click="selectedChat(i)" :class="i === activeChat ? 'active' : '' " v-if='contact.name.toUpperCase().includes(userSearch.toUpperCase())'  >  
+                    
+                    <div class="img-container"> <img :src= 'contact.avatar' :alt="contact.name"></div>
+                    
+                    <div id="general-date-informations">
+                        
+                        <div class="username" >{{contact.name}}
+                            <div class="last-message" v-if='contact.messages.length!== 0'>{{contact.messages.at(-1).message}}</div>
+                            <div class="last-message" v-else>Nessun Messaggio!</div>
+                            
+
+                        </div>
+                        
+                        <div class=" date" v-if='contact.messages.length!== 0' >{{contact.messages.at(-1).date}}</div>
+                        <div class="last-message" v-else></div>
+
+
+                    </div>
+                </div> 
+                
+            </div>
+        </aside>
+        <!-- chat con un utente -->
+        <div id="single-chat" >
+            <!-- chat utente (header) -->
+            <section class="single-chat">
+                <div class="user-top " >
+                    <div class="img-container"> <img :src='contacts[activeChat].avatar' :alt="contacts[activeChat].name"> </div>
+                    <div class="username" >{{contacts[activeChat].name}}
+
+                        <div class="last-login">Ultimo Accesso: {{getLastAccess() }}</div>
+                    </div>
+                    
+
+                </div>
+                <div class="nav-icons"> 
+                    <span class="icons-settings"><i class="fas fa-search"></i></span>
+                    <span class="icons-settings"><i class="fas fa-paperclip"></i></span>
+                    <span class="icons-settings"><i class="fas fa-ellipsis-v"></i></span>
+                </div>
             </section>
-        </main>
+            <!-- spazo er chattarw -->
+            <section id="chat" >
+                <div v-for="message, y in contacts[activeChat].messages" :key="y"  :class="message.status == 'sent' ? 'sent' : 'received' "  >
+                    <div class="my-message">{{message.message}} 
+                        <span @click="selectedMessage(y)" v-if="contacts[activeChat].visible === true"> <i class="fas fa-chevron-down"></i>
+                            <div class="message-delete-info" :class="y == activeMessage  ? 'show': '' ">
+                                <ul>
+                                    <li>info Messaggio</li>
+                                    <li @click='deleteMessage(activeMessage)'>Cancella Messaggio</li>
+                                </ul>
+                            </div>
+                        </span> 
+                        
+                    </div>                        
+                    <div class="date-time"> {{message.date}}</div>
+                    
+                    
+                </div>
+            </section>
+
+            <!-- box per scrivere il messagio -->
+            <footer id="footer-text" >
+                <span><i class="far fa-smile"></i></span>
+                <input type="text" v-model='newMessage.message' placeholder="Scrivi un messaggio" @keyup.enter='addMessage(activeChat)'  > 
+                <span><i class="fas fa-microphone"></i></span>
+            </footer>
+        
+            
+        </div>
     </div>
-        <!-- Importiamo JS -->
-        <script type="text/javascript" src="script.js"></script>
+    
+
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
