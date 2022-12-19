@@ -6,7 +6,7 @@ let app = new Vue ( {
     data : {
         //indice chat attiva
         activeChat: 0,
-        // 
+        
         activeMessage:-1,
         newMessage: {
             date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
