@@ -19,13 +19,13 @@ img {
     display: flex;
     justify-content: space-between;
     background-color:#eaeaea ;
-    border-right: 1px solid #e0e0e0;
+    border-right: 5px solid #e0e0e0;
 }
 
 
 .user-top {
     width: 70% ;
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
 }
@@ -45,7 +45,6 @@ img {
 
 .nav-icons {
     width: 30%;
-    height: 60px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -53,7 +52,7 @@ img {
 
 
 .icons-settings {
-    font-size: 20px;
+    font-size: 17px;
     color: #b1b1b1;
     margin-right: 16px;
     cursor: pointer;
@@ -72,7 +71,7 @@ img {
 
 .background-search-list {
     background-color:#fafafa ;
-    padding: 5px;
+    padding: 6px;
     position: relative;
 }
 .background-search-list i {
@@ -92,7 +91,7 @@ img {
 
 .date{
     float: right;
-    font-size: 10px;
+    font-size: 8px;
     color: #bebfc0 ;
     align-self:  flex-start;
     flex-wrap: nowrap;
@@ -100,7 +99,6 @@ img {
 
 .last-message {
     overflow:hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 150px;
     font-size: 14px;
@@ -108,17 +106,15 @@ img {
 }
 .last-login {
     color: #858c8e;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .sent {
     align-self: flex-end;
-    min-width: 150px;
-    max-width: 320px;
     background-color: #d5f9ba;
-    margin: 10px 60px;
+    margin: 10px 40px;
     border-radius: 10px;
-    font-size:14px ;
+    font-size:16px ;
     padding: 10px 10px 5px 10px;
     display: flex;
     flex-flow: column nowrap;
@@ -127,12 +123,10 @@ img {
 
 .received {
     align-self: flex-start;
-    min-width: 150px;
-    max-width: 320px;
     background-color: white;
-    margin: 10px 60px;
+    margin: 10px 40px;
     border-radius: 10px;
-    font-size:14px ;
+    font-size:16px ;
     padding: 10px 10px 5px 10px;
     display: flex;
     flex-flow: column nowrap;
@@ -157,28 +151,23 @@ img {
 
 .message-delete-info {
     width: 100px;
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);   
+    background-color: white;   
     display: none;
     position: absolute;
     z-index: 1;
-    transform: translate(-80%);    
 }
 
 .message-delete-info li {
     list-style: none;
-    padding: 10px 14px;
+    padding: 8px 14px;
 }
-
+.show{
+    display: block;
+}
 .message-delete-info li:hover {
     background-color: lightgrey;
 }
-
-
-.show {
-    display: block;
-}
-
+        
 .date-time {
     margin-top: 7px;
     font-size: 11px;
@@ -212,6 +201,7 @@ img {
 
 #first-container {
     width: 35%;
+    height: 728px;
     min-width: 250px;
     display: flex;
     flex-direction: column;
@@ -220,7 +210,7 @@ img {
 #message-alert {
     height: 70px;
     padding: 5px;
-    font-size: 0.9em;
+    font-size: 0.88rem;
     background-color: #8edafc;
     display: flex;
     align-items: center;
@@ -230,7 +220,7 @@ img {
 
 #search-chat-list {
     width: 100%;
-    height: 30px;
+    height: 28px;
     padding: 5px 0 5px 30px;
     
 }
@@ -254,7 +244,7 @@ img {
 
 #single-chat {
     width: 65%;
-    min-width: 320px;
+    min-width: 450px;
     background-image: url(img/mine.jpg);
     background-position: center;
 }
@@ -269,7 +259,7 @@ img {
     overflow-y: scroll;
 }
 
-/* input per il  messaggio */
+
 #footer-text {
     width: 100%;
     height: 60px;

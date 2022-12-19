@@ -87,7 +87,7 @@
                     <span class="icons-settings"><i class="fas fa-ellipsis-v"></i></span>
                 </div>
             </section>
-            <!-- spazo er chattarw -->
+     
             <section id="chat" >
                 <div v-for="message, y in contacts[activeChat].messages" :key="y"  :class="message.status == 'sent' ? 'sent' : 'received' "  >
                     <div class="my-message">{{message.message}} 
